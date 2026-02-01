@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Unnati 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #fff1f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 350px;
+      animation: pop 0.8s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff5c8a;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      position: relative;
+      height: 70px;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #ff5c8a;
+      color: white;
+      left: 15%;
+      transform: scale(1);
+    }
+
+    #noBtn {
+      background: #ddd;
+      color: #555;
+      left: 55%;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-600px); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="teenage_dream.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" id="card">
+    <h1>Hey Unnati 💕</h1>
+    <p>
+      Every time I think of you, my heart does a little happy dance 🥰  
+      <br><br>
+      So I just had to ask…
+      <br><br>
+      <strong>Will you be my Valentine?</strong> 💖
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💘</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
+
+    let yesScale = 1;
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 100 - 50;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+      yesScale += 0.15;
+      yesBtn.style.transform = `scale(${yesScale})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      card.innerHTML = `
+        <h1>YAYYY 💖</h1>
+        <p>
+          You just made me the happiest person ever 🥹✨  
+          <br><br>
+          I can’t wait to make so many beautiful memories with you 💕  
+          <br><br>
+          Happy Valentine’s, Unnati 🌸  
+          <br>
+          — Pranjal 💌
+        </p>
+      `;
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-20px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
